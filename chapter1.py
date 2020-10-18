@@ -1,9 +1,10 @@
 
 import cv2
-cap = cv2.VideoCapture("Resources/film CV2.mp4")
+img = cv2.imread("Resources/portret_small.jpg")
 
-while True:
-    success, img = cap.read()
-    cv2.imshow("Video",img)
-    if cv2.waitKey(1) & 0xFF ==ord('q'):
-        break
+imgGray= cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
+imgBlur = cv2.GaussianBlur(imgGray,(7,7),0)
+
+cv2.imshow("gray image",imgGray)
+cv2.imshow("Blur image",imgBlur)
+cv2.waitKey(0)
