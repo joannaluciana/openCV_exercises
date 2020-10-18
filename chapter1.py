@@ -4,13 +4,9 @@ import numpy as np
 
 img = cv2.imread("Resources/cards.jpg")
 
-width,height = 250, 350
-# we have to take numbers of cards point
-pts1 = np.float32([[20,219],[287,188],[154,482],[352,440]])
-pts2 = np.float32([[0,0],[width,0],[0,height],[width,height]])
-matrix = cv2.getPerspectiveTransform(pts1,pts2)
-imgOutput = cv2.warpPerspective(img,matrix,(width,height))
+hor = np.hstack((img,img))
+ver = np.vstack((img,img))
 
-cv2.imshow("image",img)
-cv2.imshow('Output',imgOutput)
+cv2.imshow("horizontal",hor)
+cv2.imshow("hvertical",ver)
 cv2.waitKey(0)
