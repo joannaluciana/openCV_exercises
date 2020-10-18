@@ -2,13 +2,15 @@
 import cv2
 import numpy as np
 
-img = np.zeros((512,512,3),np.uint8)
-# print(img)
-# img[200:500,200:500]=255,0,0
-# matrix size
-cv2.line(img,(0,0),(300,300),(0,255,0),4)
-cv2.rectangle(img,(0,0),(250,350),(0,0,255),cv2.FILLED)
-cv2.circle(img,(400,50),30,(255,255,0),5)
-cv2.putText(img,"Asia jest super",(300,100),cv2.FONT_HERSHEY_COMPLEX,1,(0,150,0),1)
-cv2.imshow("image", img)
+img = cv2.imread("Resources/cards.jpg")
+
+width,height = 250, 350
+# we have to take numbers of cards point
+pts1 = np.float32([[20,219],[287,188],[154,482],[352,440]])
+pts2 = np.float32([[0,0],[width,0],[0,height],[width,height]])
+matrix = cv2.getPerspectiveTransform(pts1,pts2)
+imgOutput = cv2.warpPerspective(img,matrix,(width,height))
+
+cv2.imshow("image",img)
+cv2.imshow('Output',imgOutput)
 cv2.waitKey(0)
