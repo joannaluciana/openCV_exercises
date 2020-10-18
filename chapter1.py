@@ -2,18 +2,12 @@
 import cv2
 import numpy as np
 img = cv2.imread("Resources/portret_small.jpg")
-kernel = np.ones((5,5),np.uint8)
+print(img.shape)
+imgResize = cv2.resize(img,(600,500))
 
-imgGray= cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
-imgBlur = cv2.GaussianBlur(imgGray,(7,7),0)
-imgCanny = cv2.Canny(img,150,200)
-imgDialation = cv2.dilate(imgCanny,kernel,iterations=1)
-imgEroded = cv2.erode(imgDialation,kernel,iterations=1)
+imgCroped = img[0:200,200:500]
 
-
-cv2.imshow("gray image",imgGray)
-cv2.imshow("Blur image",imgBlur)
-cv2.imshow("Canny image",imgCanny)
-cv2.imshow("Dialation image",imgDialation)
-cv2.imshow("Erosion image",imgEroded)
+cv2.imshow("image",img)
+cv2.imshow("image resize",imgResize)
+cv2.imshow("image croped",imgCroped)
 cv2.waitKey(0)
