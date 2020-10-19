@@ -15,5 +15,9 @@ def getContours(img,imgCon):
            approx = cv2.approxPolyDP(cnt, 0.02 * peri, True)
            print(peri, len(approx))
            x,y,w,h = cv2.boundingRect(approx)
+           if len(approx) ==3: objectType ="tri"
+           else:objectType="None"
         #    cv2.rectangle(imgCon,(x,y),(x+w,y+h),(255,153,255),5)
+           cv2.rectangle(imgCon,(x,y),(x+w,y+h),(255,153,255),3)
+           cv2.putText(imgCon,objectType,(x+(w//2)-10,y+(h//2)-10),cv2.FONT_HERSHEY_COMPLEX,0.5,(255,153,255),3)
 
