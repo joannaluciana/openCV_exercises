@@ -4,13 +4,7 @@ import numpy as np
 from stack import stackImages
 from getCont import getContours
 
-# def getContours(img):
 
-#     contours,hierarchy = cv2.findContours(img,cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
-#     for cnt in contours:
-#         area = cv2.contourArea(cnt)
-#         print(area)
-#         cv2.drawContours(imgContour, cnt, -1, (255,153,255),10)
 
 path = 'Resources/geom.png'
 img = cv2.imread(path)
