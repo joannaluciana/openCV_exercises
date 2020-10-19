@@ -1,26 +1,20 @@
 
 import cv2
 import numpy as np
-from stack import stackImages
-from getCont import getContours
 
 
 
-path = 'Resources/geom.png'
+faceCascade=cv2.CascadeClassifier("Resources/haarcascade_frontalface_default.xml")
+path = 'Resources/portret_small.jpg'
 img = cv2.imread(path)
-imgContour = img.copy()
+imgGray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
+faces = faceCascade.detectMultiScale(imgGray,1.1,4)
 
-imgGray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-imgBlur = cv2.GaussianBlur(imgGray,(7,7),1)
-imgCanny=cv2.Canny(imgBlur,50,50)
-getContours(imgCanny,imgContour)
-
-imgBlank=np.zeros_like(img)
+for (x,y,w,h) in faces:
+    cv2.rectangle(img,(x,y),(x+w,y+h),(255,0,0),2)
 
 
-imgStack = stackImages(0.6,([img,imgGray,imgBlur],
-[img,imgContour,imgContour]))
 
-cv2.imshow("Stacked ",imgStack)
+cv2.imshow("result ",img)
 
 cv2.waitKey(0)
