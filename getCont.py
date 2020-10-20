@@ -16,14 +16,14 @@ def getContours(img,imgCon):
            print(peri, len(approx))
            x,y,w,h = cv2.boundingRect(approx)
 
-           if len(approx) ==3: objectType ="triangle"
-           elif len(approx) == 4 :
-               aspRatio = w/float(h)
-               if aspRatio > 0.95 and aspRatio <1.05: objectType = "square"
-               else:objectType="Rectangle"
-           elif len(approx)>6: objectType = "Circle"
-           else:objectType="None"
-        #    cv2.rectangle(imgCon,(x,y),(x+w,y+h),(255,153,255),5)
-           cv2.rectangle(imgCon,(x,y),(x+w,y+h),(255,153,255),3)
-           cv2.putText(imgCon,objectType,(x+(w//2)-10,y+(h//2)-10),cv2.FONT_HERSHEY_COMPLEX,0.5,(255,153,255),1)
+        #    if len(approx) ==3: objectType ="triangle"
+        #    elif len(approx) == 4 :
+        #        aspRatio = w/float(h)
+        #        if aspRatio > 0.95 and aspRatio <1.05: objectType = "square"
+        #        else:objectType="Rectangle"
+        #    elif len(approx)>6: objectType = "Circle"
+        #    else:objectType="None"
+        # #    cv2.rectangle(imgCon,(x,y),(x+w,y+h),(255,153,255),5)
+        #    cv2.rectangle(imgCon,(x,y),(x+w,y+h),(255,153,255),3)
+        #    cv2.putText(imgCon,objectType,(x+(w//2)-10,y+(h//2)-10),cv2.FONT_HERSHEY_COMPLEX,0.5,(255,153,255),1)
 
